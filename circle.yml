@@ -1,1 +1,26 @@
-circle.yml
+machine:
+  environment:
+    JEKYLL_ENV: production
+    RUBY_ENV: production
+  ruby:
+    version: 2.4.0
+dependencies:
+  pre:
+    - gem install jekyll s3_website jekyll-sitemap jekyll-paginate jekyll-gist
+  override:
+    - bundle install: # note the colon here
+        timeout: 240 # note the double indentation (four spaces) here
+  cache_directories:
+    - "/opt/circleci/.rvm/gems"
+compile:
+  override:
+    - bundle exec jekyll b -d $CIRCLE_ARTIFACTS
+test:
+  override:
+    - echo "Oh yeah!" # No way to test Jekyll. Just do something to satisfy CircleCI.
+deployment:
+  # Only deploy master
+  production:
+    branch: master
+    commands:
+      - s3_website push

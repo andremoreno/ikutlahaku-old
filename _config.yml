@@ -105,7 +105,7 @@ bitly:
   api_key: "R_177d2811648f400e935b251cdbce495b"
 
 
-exclude: ['Gemfile*','.gitignore','README*','LICENSE*', 'vendor','.travis.yml','manifest.appcache','archives.md','circle.yml' ]
+exclude: ['Gemfile*','.gitignore','README*','LICENSE*', 'vendor','.travis.yml','manifest.appcache','archives.md','circle.yml','.env','s3_website.yml']
 
 
 social:

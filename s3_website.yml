@@ -1,0 +1,30 @@
+s3_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+s3_secret: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+s3_bucket: <%= ENV['S3_BUCKET_NAME'] %>
+
+site: public
+
+max_age:
+  "*": <%= 365 * 24 * 60 * 60 %>
+  "favicon.ico": <%= 365 * 24 * 60 * 60 %>
+  "robots.txt": <%= 365 * 24 * 60 * 60 %>
+
+cache_control:
+  "*": max-age=31536000, public
+
+gzip:
+  - .html
+  - .css
+  - .js
+
+exclude_from_upload:
+  - .env
+  - s3_website.yml
+  - misc
+
+ignore_on_server:
+  - index.html
+  - media
+  - images
+  - wp-includes
+  - wp-content
