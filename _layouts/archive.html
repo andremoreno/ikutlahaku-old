@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<div id="page">
+{% for post in site.posts %}
+  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+  {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+  {% if year != nyear %}
+    [<a {% if page.url contains year %}class="active"{% endif %} href="/{{year}}/">{{year}}</a>]
+  {% endif %}
+{% endfor %}
+</div>
+
+<!-- <h1> Posts Archive: {% if page.period["month"] != nil %} {{ page.period["month"] }} - {% endif %} {{page.period["year"]}} </h1><br> -->
+<ul class="posts">
+{% for post in page.period_posts reversed %}
+	{% unless post.next %}
+		<h3>{{ post.date | date: '%B %Y' }}</h3>
+	{% else %}
+		{% capture currPostDate %}{{ post.date | date: '%Y %b' }}{% endcapture %}
+		{% capture nextPostDate %}{{ post.next.date | date: '%Y %b' }}{% endcapture %}
+		{% if currPostDate != nextPostDate %}
+			<h3>{{ post.date | date: '%B %Y' }}</h3>
+		{% endif %}
+	{% endunless %}
+	<li><a href="{{post.url}}">{{ post.title }} : {{ post.ayat }}</a></li>
+{% endfor %}
+</ul>

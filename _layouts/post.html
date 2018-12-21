@@ -1,0 +1,112 @@
+---
+layout: default
+---
+
+{% capture iasharewa %}Renungan Hari {{ page.title }} - {{ page.ayat }} - {{ site.securl }}{{ page.url }}{% endcapture %}
+
+<article class="post" itemscope itemtype="http://schema.org/Article">
+	{% comment %}<!--{% if page.image %}
+	<a href="{{site.iacdn}}{{page.image}}" class="image featured"><img src="https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?url={{site.iacdn}}{{page.image}}&container=focus&resize_w=720&resize_h=720&refresh=300" alt="Renungan Harian {{ page.title }}" /></a>
+	{% endif %}-->{% endcomment %}
+
+	<header>
+		<h1 class="post-title align-center" itemprop="name">Renungan Harian<br />{{ page.title }}</h1>
+	</header>
+
+	<time class="op-published" itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}"></time>
+	<time class="op-modified" itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}"></time>
+	<meta itemprop="url" content="{{ site.securl }}{{ page.url }}" />
+	<span itemprop="author" content="Ikutlah Aku"></span>
+	<span itemprop="publisher" content="https://plus.google.com/102150360200255682268"></span>
+
+	<span itemprop="image" itemscope itemtype="https://schema.org/ImageObject" content="{{site.iacdn}}{{page.image}}"></span>
+
+    <span itemprop="logo" content="{{site.iacdn}}/assets/ia_512.png"></span>
+
+
+
+	<div class="entry" itemprop="articleBody">
+	<div class="headayat">{{ page.isiayat }}</div>
+	<div class="headayat">{{ page.ayat }}</div>
+	
+	{% comment %}<hr />
+
+	<p class="align-center sponsor">
+	<a href="whatsapp://send?text={{ iasharewa | uri_escape }}" class="iasprt iasharewhatsapp" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+
+	<a href="telegram://msg?text={{ iasharewa | uri_escape }}" class="iasprt iasharetelegram" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+
+	<a href="bbmi://api/share?message={{ iasharewa | uri_escape }}&userCustomMessage=BBM%20message" class="iasprt iasharebbm" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+
+	<a href="http://line.me/R/msg/text/?{{ iasharewa | uri_escape }}" class="iasprt iashareline" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+
+	<a href="https://www.ikutlahaku.com/sms/?text={{ iasharewa | uri_escape }}" class="iasprt iasharesms" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+	</p>{% endcomment %}
+
+	<hr />
+	{{ content }}
+	</div>
+	<hr />
+
+	<div class="pagination">
+	<div style="width:48%; display: inline-block">
+	{% if page.previous %}
+	<a class="older iasprt iaprevious" href="{{ page.previous.url }}">&nbsp;</a>
+	{% else %}
+	<span class="older">&nbsp;</span>
+	{% endif %}
+	</div>
+
+	<div style="width:48%; display: inline-block;">
+
+	{% if page.next %}
+	<a class="iasprt ianext" href="{{ page.next.url }}">&nbsp;</a>
+	{% else %}
+	<span class="newer">&nbsp;</span>
+	{% endif %}
+	</div>
+	</div>
+
+	<hr />
+	<h4>Beritakan Kabar Baik</h4>
+	<p><a href="https://www.facebook.com/sharer.php?u={{ site.securl }}{{ page.url }}" class="iasprt iasharefacebook" target="_blank" rel="nofollow" data-href="{{ site.securl }}{{ page.url }}" >&nbsp;</a>&nbsp; 
+
+	<a href="https://twitter.com/intent/tweet?text={% capture iasharetweet %}Renungan Hari {{ page.title }} - {{ page.ayat }} - {{ site.securl }}{{ page.url }} via @IAdotcom #IkutlahAku #HKBPRawamangun{% endcapture %}{{ iasharetweet | uri_escape }}" class="iasprt iasharetwitter" target="_blank" rel="nofollow" >&nbsp;</a>&nbsp; 
+
+	<a href="https://plusone.google.com/_/+1/confirm?hl=en&amp;url={{ site.securl }}{{ page.url }}" class="iasprt iasharegoogleplus" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+
+	<a href="http://pinterest.com/pin/create/bookmarklet/?media={{site.iacdn}}{{page.image}}&amp;url={{ site.securl }}{{ page.url }}&amp;is_video=false&amp;description=Renungan%20Hari%20{{ page.title | append: ' ' | uri_escape }}" class="iasprt iasharepinterest" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+
+	<a href="{{site.iacdn}}{{page.image}}" class="iasprt iasharepath" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; </p>
+
+	<p><a href="whatsapp://send?text={{ iasharewa | uri_escape }}" class="iasprt iasharewhatsapp" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+
+	<a href="telegram://msg?text={{ iasharewa | uri_escape }}" class="iasprt iasharetelegram" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+
+	<a href="bbmi://api/share?message={{ iasharewa | uri_escape }}&userCustomMessage=BBM%20message" class="iasprt iasharebbm" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+
+	<a href="http://line.me/R/msg/text/?{{ iasharewa | uri_escape }}" class="iasprt iashareline" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+
+	<a href="https://www.ikutlahaku.com/sms/?text={{ iasharewa | uri_escape }}" class="iasprt iasharesms" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+	
+	</p>
+
+	<div id="fb-root"></div>
+	<div data-lazy-widget="fb_1" class="fb-like" data-href="{{ site.securl }}{{ page.url }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+
+	<div id="fb_1"><!-- <script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId={{site.fb_app_id}}";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>--></div>
+	
+	<hr />
+
+	<h4>Komentar</h4>
+
+	<div data-lazy-widget="fb_1" class="fb-comments" data-href="{{ site.securl }}{{ page.url }}" data-width="100%" data-numposts="5"></div>
+
+	<footer></footer>
+</article>

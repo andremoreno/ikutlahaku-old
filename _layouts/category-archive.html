@@ -1,0 +1,13 @@
+---
+layout: edisi
+---
+
+<div class="page">
+<ul class="posts">
+  {% for post in page.posts reversed %}
+    <li>
+      <a class="post-link headayat" href="{{ post.url }}">{{ post.title }} : {{ post.ayat }}</a>
+    </li>
+  {% endfor %}
+</ul>
+</div>

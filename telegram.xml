@@ -1,0 +1,45 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+     xmlns:georss="http://www.georss.org/georss" 
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" 
+     xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>{{ site.title }}</title>
+    <description>{{ site.description }}</description>
+    <atom:link href="{{ site.securl }}/telegram.php" rel="self" type="application/rss+xml" />
+    <link>{{ site.securl }}</link>
+    <lastBuildDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %z" }}</lastBuildDate>
+    <language>en</language>
+    <sy:updatePeriod>hourly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+    <image>
+      <url>{{site.iacdn}}/assets/img/ia.png</url>
+      <title>{{ site.title }}</title>
+      <link>{{ site.securl }}</link>
+    </image>
+    <atom:link href="{{ site.securl }}/telegram.php" rel="self" type="application/rss+xml" />
+    {% for post in site.posts limit:1 %}
+      <item>
+        <title>{{ post.title }}</title>
+        {% if post.isiayat %}
+        <description><![CDATA[{{ post.isiayat }} [{{ post.ayat }}]]]></description>
+        {% else %}
+        <description><![CDATA[{{ post.content | truncatewords:100 | strip_html }}]]></description>
+        {% endif %}
+        <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+        <link>{{ site.securl }}{{ post.url | remove:'index.html' }}</link>
+        <guid isPermaLink="true">{{ site.securl }}{{ post.url | remove:'index.html' }}</guid>
+        <content:encoded><![CDATA[<img src="{{site.iacdn}}{{post.image}}" alt="" />{{ post.content }}]]></content:encoded>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<link href="http://gmpg.org/xfn/11" rel="profile">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="apple-mobile-web-app-title" content="{{site.title}}" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+{% if page.title == "Home" %}
+{% capture sitedesc %}{{ site.title }} {{ site.stitle }} - Renungan Harian ini ditujukan untuk semua umat kristen, yang berpedoman pada ayat-ayat harian Almanak HKBP.{% endcapture %}
+{% capture sitetitle %}{{ site.title }} {{ site.stitle }}{% endcapture %}
+{% capture ogtype %}website{% endcapture %}
+{% capture ogimage %}{{site.iastatic}}/assets/img/iafb.png{% endcapture %}
+{% capture twimage %}{{site.iastatic}}/assets/img/ia.png{% endcapture %}
+{% capture xpagetitle %}{{ site.title }} &middot; {{ site.stitle }}{% endcapture %}
+{% capture pagetitle %}{{ site.stitle }} {{ site.title }}{% if paginator.page > 1 %} &middot; Halaman {{ paginator.page }}{% endif %}{% endcapture %}
+{% else %}
+{% if page.image %}
+{% capture pagetitle %}{{ site.title }} &middot; Renungan Hari {{ page.title }}{% endcapture %}
+{% capture sitedesc %}{{ page.ayat }} - {{ page.isiayat }}{% endcapture %}
+{% capture sitetitle %}Renungan Hari {{ page.title }}{% endcapture %}
+{% capture ogtype %}article{% endcapture %}
+{% capture ogimage %}{{site.iaayat}}{{page.image}}{% endcapture %}
+{% capture twimage %}{{site.iaayat}}{{page.image}}{% endcapture %}
+{% else %}
+{% capture pagetitle %}{{ site.title }} &middot; {{ page.title | replace: '-', ' ' | capitalize }}{% endcapture %}
+{% capture sitedesc %}{{ site.title }} {{ site.stitle }} - Renungan Harian ini ditujukan untuk semua umat kristen, yang berpedoman pada ayat-ayat harian Almanak HKBP.{% endcapture %}
+{% capture sitetitle %}{{ site.title }} {{ site.stitle }}{% endcapture %}
+{% capture ogtype %}article{% endcapture %}
+{% capture ogimage %}{{site.iastatic}}/assets/img/iafb.png{% endcapture %}
+{% capture twimage %}{{site.iastatic}}/assets/img/ia.png{% endcapture %}
+{% endif %}
+{% endif %}
+
+<title>{{ pagetitle | strip_html}}</title>
+<meta name="description" content="{{sitedesc | replace: '<br />', ' - ' | strip_html | xml_escape }}" />
+
+{% if site.twitter_handle %}<!-- twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="{{twimage}}" />
+<meta name="twitter:title" content="{{sitetitle | replace: '<br />', ' - ' | strip_html | xml_escape }}" />
+<meta name="twitter:description" content="{{sitedesc | replace: '<br />', ' - ' | strip_html | xml_escape }}" />
+<meta name="twitter:creator" content="{{ site.twitter_handle }}" />
+{% endif %}
+{% if site.fb_app_id %}<!-- fb opengraph -->
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="{{ ogtype }}" />
+<meta property="og:title" content="{{ sitetitle | replace: '<br />', ' - ' | strip_html | xml_escape }}" />
+<meta property="og:description" content="{{sitedesc | replace: '<br />', ' - ' | strip_html | xml_escape }}" />
+<meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.securl }}" />
+<meta property="og:site_name" content="{{ site.title | xml_escape |strip_html }}" />
+<meta property="og:image" content="{{ogimage}}" />
+<meta property="fb:app_id" content="{{site.fb_app_id}}" />
+{% endif %}
+
+{% if page.image %}
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+<meta property="article:author" content="Ikutlah Aku" />
+{% endif %}
+
+<link href="https://plus.google.com/102150360200255682268" rel="publisher" />
+
+<!-- CSS -->
+<link type="text/css" rel="stylesheet" href="{{site.iastatic}}{{ 'css/default' | asset_path }}" />
+
+<!-- Icons -->
+<link href="{{site.iastatic}}/assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="{{site.iastatic}}/assets/img/favicon.png" rel="icon" type="image/png" />
+<link href="{{site.iastatic}}/assets/img/ia_60.png" rel="apple-touch-icon" />
+<link href="{{site.iastatic}}/assets/img/ia_76.png" rel="apple-touch-icon" sizes="76x76" />
+<link href="{{site.iastatic}}/assets/img/ia_120.png" rel="apple-touch-icon" sizes="120x120" />
+<link href="{{site.iastatic}}/assets/img/ia_152.png" rel="apple-touch-icon" sizes="152x152" />
+
+<!-- RSS -->
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://www.ikutlahaku.com/atom.xml">
+
+<!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("6e661c4ed992f864d5f93f9dbb3b419d");</script><!-- end Mixpanel -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/Blog">
+{% if page.image %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId={{site.fb_app_id}}";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endif %}
+    <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>{{ site.description }}</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item{% if page.url == '/' %} active{% endif %}" href="{{ site.baseurl }}/">Depan</a>
+	
+    {% assign pages_list = site.pages | sort:"weight" %}
+    {% for node in pages_list %}
+      {% if node.title != null %}
+        {% if node.layout == "page" %}
+          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+
+	<!-- {% assign sortedcats = site.edisi_list %}
+	{% for node in sortedcats limit:4 %}
+	{% capture edisiurl %}/edisi/{{ node[0] }}/{% endcapture %}
+	<a class="sidebar-nav-item{% if page.url == edisiurl %} active{% endif %}" href="{{ edisiurl }}">Edisi {{ node[1] }}</a>
+	{% endfor %} -->
+
+	<a class="sidebar-nav-item" href="https://alkitab.ikutlahaku.com" target="_blank">Alkitab</a>
+
+	<a class="sidebar-nav-item" href="https://telegram.me/IkutlahAkuBot">Telegram</a>
+
+	<a class="sidebar-nav-item" href="https://www.facebook.com/IkutlahAkuDotCom/?ref=bookmarks">Facebook</a>
+
+	<a class="sidebar-nav-item" href="https://medium.com/@ikutlahaku">Medium</a>
+
+	<a class="sidebar-nav-item" href="https://www.pinterest.com/ikutlahaku/">Pinterest</a>
+
+	<a class="sidebar-nav-item" href="https://twitter.com/IAdotcom">Twitter</a>
+
+	<a class="sidebar-nav-item" href="https://steller.co/ikutlahaku/">Steller</a>
+
+	<a class="sidebar-nav-item" href="{{ site.social.googleplus }}">Google+</a>
+
+  </nav>
+
+  <div class="sidebar-item">
+    <small>
+      &copy; {{ site.time | date: '%Y' }} <a href="http://www.hkbprawamangun.com" target="_blank">HKBP Rawamangun</a>
+    </small>
+	<br /><br />
+	<a href="https://mixpanel.com/f/partner" rel="nofollow"><img src="{{site.iastatic}}/assets/img/mixpanel_badge_light.png" alt="Mobile Analytics" width="114" height="36" /></a>
+  </div>
+</div>
+
+
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        {{ content }}
+      </div>
+    </div>
+
+<label for="sidebar-checkbox" class="sidebar-toggle"></label>
+<a href="#" class="iasprt iatop"></a>
+
+<script type="text/javascript" src="{{site.iastatic}}{{ 'js/default' | asset_path }}" async></script>
+
+<script type="text/javascript">
+{% if page.title == "Home" %}
+mixpanel.track('Index Page');
+{% else %}
+{% if page.image %}
+mixpanel.track('Post: {{page.title}}');
+{% else %}
+mixpanel.track('Static Page: {{ page.stitle }}');
+{% endif %}
+{% endif %}
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','{{site.iastatic}}/analytics.js','ga');
+
+  ga('create', 'UA-53417403-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"fhgGm1akKd6052", domain:"ikutlahaku.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=fhgGm1akKd6052" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript -->
+<!-- Last Build: {{site.time}} -->
+</Body>
+</html>

@@ -1,0 +1,112 @@
+# Site settings
+encoding: utf-8
+timezone: "Asia/Jakarta"
+future: false
+
+title: Ikutlah Aku
+stitle: "Renungan Harian"
+tagline: "Renungan Harian"
+email: hello@ikutlahaku.com
+description: > # this means to ignore newlines until "baseurl:"
+  Renungan Harian
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://www.ikutlahaku.com" # the base hostname & protocol for your site
+securl: "https://www.ikutlahaku.com" # the base hostname & protocol for your site
+twitter_username: IAdotcom
+github_username:  
+disqus_shortname: ikutlahaku
+
+
+destination : ./public
+
+
+
+# Build settings
+#markdown: kramdown
+#highlighter: pygments
+
+paginate: 10
+
+author: Ikutlah Aku
+
+#gems:
+plugins:
+  - jekyll-archives
+  - jekyll-paginate
+  - jekyll-assets
+#  - amp-jekyll
+
+
+#ampdir: amp
+
+#iacdn: "https://ikutlahaku.s3.amazonaws.com"
+iacdn: "https://cdn.ikutlahaku.com"
+#iacdn: "https://iacdn.global.ssl.fastly.net"
+localcdn: "https://truvasemuv-a.akamaihd.net"
+logo: ialogo.png
+
+permalink: :year/:month/:day.html
+#relative_permalinks: true
+
+jekyll-archives:
+#  enabled: ['year', 'month', 'categories']
+  enabled: ['categories']
+  layouts:
+#    year: year-archive
+#    month: month-archive
+    category: category-archive
+  permalinks:
+#    year: '/:year/'
+#    month: '/:year/:month/'
+    category: '/edisi/:name/'
+
+# Open Graph
+fb_app_id: 317214381755008
+twitter_handle: "@IAdotcom"
+
+#compress_html:
+#    clippings:      all
+#    ingore:
+#        envs:       [ "test" ]
+
+
+assets:
+  #compress:
+  #  css: true
+  #  js: true
+  compression: true
+
+  #cache_type: memory
+  prefix: "assets"
+  digest: true
+  sources:
+    - _assets
+
+  caching:
+    path: ".jekyll-cache/assets"
+    type: file # Possible values: memory, file
+    enabled: true
+
+
+edisi_list:
+  mei-2017: "Mei 2017"
+  desember-2016: "Desember 2016"
+  juli-2016: "Juli 2016"
+  juni-2016: "Juni 2016"
+  mei-2016: "Mei 2016"
+  april-2016: "April 2016"
+  maret-2016: "Maret 2016"
+  februari-2016: "Februari 2016"
+  januari-2016: "Januari 2016"
+
+
+bitly:
+  username: "ikutlahaku"
+  api_key: "R_177d2811648f400e935b251cdbce495b"
+
+
+exclude: ['Gemfile*','.gitignore','README*','LICENSE*', 'vendor','.travis.yml','manifest.appcache','archives.md']
+
+
+social:
+  googleplus: "https://plus.google.com/102150360200255682268/"
