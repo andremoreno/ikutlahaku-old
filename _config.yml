@@ -19,8 +19,6 @@ disqus_shortname: ikutlahaku
 
 destination : ./public
 
-
-
 # Build settings
 #markdown: kramdown
 #highlighter: pygments
