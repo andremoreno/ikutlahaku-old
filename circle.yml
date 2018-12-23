@@ -3,10 +3,10 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.4.1
-      - image: circleci/openjdk
+      - image: circleci/openjdk:8-jdk-node
 
     environment:
-      BUNDLE_PATH: ~/repo/vendor/bundle
+      - JEKYLL_ENV=production
     steps:
       - checkout
       - restore_cache:
@@ -20,8 +20,10 @@ jobs:
             - "vendor/bundle"
       - run:
           name: Build site
-          command: bundle exec jekyll build --force_polling --future true --incremental true
-
+          command: bundle exec jekyll build --incremental true
+      - run:
+          name: Test using htmlproofer
+          command: bundle exec htmlproofer ./public --check-html --disable-external --empty_alt_ignore
       - run:
           name: Deploy to s3
           command: s3_website push
