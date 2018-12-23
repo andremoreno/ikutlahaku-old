@@ -21,7 +21,7 @@ jobs:
             - "vendor/bundle"
       - run:
           name: Build site
-          command: bundle exec jekyll build
+          command: bundle exec jekyll build --force_polling --future true --incremental true
       - run:
           name: Test using htmlproofer
           command: bundle exec htmlproofer ./public --check-html --disable-external --empty_alt_ignore
