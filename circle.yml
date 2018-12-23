@@ -1,26 +1,38 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/ruby:2.4.1
-      - image: circleci/openjdk:8-jdk
+machine:
+  environment:
+    JEKYLL_ENV: production
+    RUBY_ENV: production
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+    # NOKOGIRI_USE_SYSTEM_LIBRARIES: true # speeds up installation of html-proofer
+  ruby:
+    version: 2.4.1
+  node:
+    version: 8.1
 
-    environment:
-      - JEKYLL_ENV=production
-    steps:
-      - checkout
-      - restore_cache:
-          key: jekyll-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: Install library dependencies
-          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-      - save_cache:
-          key: jekyll-{{ checksum "Gemfile.lock" }}
-          paths:
-            - "vendor/bundle"
-      - run:
-          name: Build site
-          command: bundle exec jekyll build --incremental true
-      - run:
-          name: Deploy to s3
-          command: s3_website push
+dependencies:
+  pre: 
+    - gem install jekyll s3_website
+  override:
+    - bundle install: # note the colon here
+        timeout: 240 # note the double indentation (four spaces) here
+    - yarn
+  cache_directories:
+    - "/opt/circleci/.rvm/gems"
+    - ~/.cache/yarn
+
+compile:
+  override:
+  - bundle exec jekyll build --incremental true
+
+test:
+  override:
+    - echo "Oh yeah!" # No way to test Jekyll. This is run to satisfy CircleCI
+  post:
+  # - bundle exec htmlproofer ./_site --allow-hash-href --check-favicon --check-html --disable-external
+
+deployment:
+  # Only deploy master
+  production:
+    branch: master
+    commands:
+      - s3_website push
