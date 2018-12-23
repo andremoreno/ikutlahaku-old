@@ -22,5 +22,9 @@ jobs:
           name: Build site
           command: bundle exec jekyll build --incremental true
       - run:
+          name: Install OpenJRE
+          command: sudo apt-get install --assume-yes openjdk-8-jre
+
+      - run:
           name: Deploy to s3
           command: s3_website push
