@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.4.1
-      - image: circleci/openjdk:8-jdk-node
+      #- image: circleci/openjdk:8-jdk-node
 
     environment:
       - JEKYLL_ENV=production
@@ -21,6 +21,11 @@ jobs:
       - run:
           name: Build site
           command: bundle exec jekyll build --incremental true
+    # Install OpenJRE for S3 Website. This will move to a custom Docker container in a future release
+    - run:
+          name: Install OpenJRE
+          command: sudo apt-get install --assume-yes openjdk-7-jre
+
       - run:
           name: Deploy to s3
           command: s3_website push
