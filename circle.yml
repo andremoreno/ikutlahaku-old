@@ -28,22 +28,18 @@ jobs:
           root: ./
           paths:
             - public
-
-deploy:
+  deploy:
     <<: *defaults
     docker:
-      - image: circleci/python:3.6.3
+      - image: image: circleci/openjdk:8-jdk-node
     environment:
       S3_BUCKET_NAME: www.ikutlahaku.com
     steps:
       - attach_workspace:
           at: ./
       - run:
-          name: Install AWS CLI
-          command: pip install awscli --upgrade --user
-      - run:
-          name: Upload to s3
-          command: ~/.local/bin/aws s3 sync ./public s3://$S3_BUCKET_NAME/ --delete --acl public-read
+          name: Deploy to s3
+          command: s3_website push
 workflows:
   version: 2
   test-deploy:
@@ -52,4 +48,6 @@ workflows:
       - deploy:
           requires:
             - build
-
+          filters:
+            branches:
+              only: master
