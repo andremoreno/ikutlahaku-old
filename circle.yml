@@ -5,9 +5,9 @@ jobs:
       - image: circleci/ruby:2.4.1
       - image: circleci/openjdk:8-jdk-node
       - image: circleci/node:4.8.2
-    working_directory: ~/jekyll
+
     environment:
-      - JEKYLL_ENV=production
+      BUNDLE_PATH: ~/repo/vendor/bundle
     steps:
       - checkout
       - restore_cache:
