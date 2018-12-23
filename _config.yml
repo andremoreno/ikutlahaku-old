@@ -28,7 +28,7 @@ paginate: 10
 author: Ikutlah Aku
 
 #gems:
-plugins:
+plugins_dir:
   - jekyll-archives
   - jekyll-paginate
   - jekyll-assets
