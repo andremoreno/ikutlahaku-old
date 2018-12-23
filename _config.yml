@@ -85,7 +85,6 @@ assets:
     type: file # Possible values: memory, file
     enabled: true
 
-
 edisi_list:
   mei-2017: "Mei 2017"
   desember-2016: "Desember 2016"
