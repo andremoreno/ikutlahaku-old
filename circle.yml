@@ -45,8 +45,8 @@ jobs:
           command: |
             mkdir ~/.aws
             echo "[default]" >> ~/.aws/credentials
-            echo "aws_access_key_id = 0DM4N3GH4JYTYK17J002" >> ~/.aws/credentials
-            echo "aws_secret_access_key = wuvfByQsLD+Og9eFUAUTCubPJOh3M1uXmNVQVzPk" >> ~/.aws/credentials
+            echo "aws_access_key_id = $AWS_ACCESS_KEY_ID" >> ~/.aws/credentials
+            echo "aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" >> ~/.aws/credentials
       - run:
           name: Upload to s3
           command: ~/.local/bin/aws s3 sync ./public s3://$S3_BUCKET_NAME/ --delete --acl public-read
