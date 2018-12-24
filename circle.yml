@@ -41,6 +41,13 @@ jobs:
           name: Install AWS CLI
           command: pip install awscli --upgrade --user
       - run:
+          name: Login to AWS as circleci seems to ignore the setting
+          command: |
+            mkdir ~/.aws
+            echo "[default]" >> ~/.aws/credentials
+            echo "aws_access_key_id = 0DM4N3GH4JYTYK17J002" >> ~/.aws/credentials
+            echo "aws_secret_access_key = wuvfByQsLD+Og9eFUAUTCubPJOh3M1uXmNVQVzPk" >> ~/.aws/credentials
+      - run:
           name: Upload to s3
           command: ~/.local/bin/aws s3 sync ./public s3://$S3_BUCKET_NAME/ --delete --acl public-read
 workflows:
