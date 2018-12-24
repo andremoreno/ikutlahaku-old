@@ -6,7 +6,6 @@ jobs:
     <<: *defaults
     docker:
       - image: circleci/ruby:2.5
-      - image: circleci/openjdk:8-jdk-node
     environment:
       BUNDLE_PATH: ~/repo/vendor/bundle
     steps:
@@ -25,10 +24,33 @@ jobs:
       - run:
           name: Jekyll build
           command: bundle exec jekyll build --incremental true
-      - run:
-          name: Deploy to s3
-          command: s3_website push
       - persist_to_workspace:
           root: ./
           paths:
             - public
+  deploy:
+    <<: *defaults
+    docker:
+      - image: circleci/python:3.6.3
+    environment:
+      S3_BUCKET_NAME: www.ikutlahaku.com
+    steps:
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Install AWS CLI
+          command: pip install awscli --upgrade --user
+      - run:
+          name: Upload to s3
+          command: ~/.local/bin/aws s3 sync ./public s3://$S3_BUCKET_NAME/ --delete --acl public-read
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
