@@ -15,6 +15,6 @@ Ini adalah situs berisikan <a href="https://www.ikutlahaku.com">Renungan Harian<
 
 ---
 
-<a href="http://validator.w3.org/feed/check.cgi?url=https%3A//www.ikutlahaku.com/atom.xml"><img src="{{site.iacdn}}/assets/valid-atom.png" alt="[Valid Atom 1.0]" title="Validate my Atom 1.0 feed" /></a>
+<a href="http://validator.w3.org/feed/check.cgi?url=https%3A//www.ikutlahaku.com/atom.xml"><img src="/assets/img/valid-atom.png" alt="[Valid Atom 1.0]" title="Validate my Atom 1.0 feed" /></a>
 
-<a href="http://validator.w3.org/feed/check.cgi?url=https%3A//www.ikutlahaku.com/feed.xml"><img src="{{site.iacdn}}/assets/valid-rss-rogers.png" alt="[Valid RSS]" title="Validate my RSS feed" /></a>
+<a href="http://validator.w3.org/feed/check.cgi?url=https%3A//www.ikutlahaku.com/feed.xml"><img src="/assets/img/valid-rss-rogers.png" alt="[Valid RSS]" title="Validate my RSS feed" /></a>

@@ -10,7 +10,7 @@ email: hello@ikutlahaku.com
 description: > # this means to ignore newlines until "baseurl:"
   Renungan Harian
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://www.ikutlahaku.com" # the base hostname & protocol for your site
+url: "https://www.ikutlahaku.com" # the base hostname & protocol for your site
 securl: "https://www.ikutlahaku.com" # the base hostname & protocol for your site
 twitter_username: IAdotcom
 github_username:  
@@ -32,15 +32,15 @@ plugins:
   - jekyll-archives
   - jekyll-paginate
   - jekyll-assets
-#  - amp-jekyll
+#  - jekyll-pdf
+
 
 
 #ampdir: amp
 
-#iacdn: "https://ikutlahaku.s3.amazonaws.com"
-iacdn: "https://cdn.ikutlahaku.com"
-#iacdn: "https://iacdn.global.ssl.fastly.net"
-localcdn: "https://truvasemuv-a.akamaihd.net"
+#iacdn: "https://cdn.andremoreno.com/ikutlahaku"
+iacdn: "https://www.ikutlahaku.com"
+
 logo: ialogo.png
 
 permalink: :year/:month/:day.html
@@ -74,11 +74,13 @@ assets:
   #  js: true
   compression: true
 
+
   #cache_type: memory
   prefix: "assets"
   digest: true
   sources:
-    - _assets
+    - assets/_css
+    - assets/_js
 
   caching:
     path: ".jekyll-cache/assets"
@@ -102,8 +104,17 @@ bitly:
   api_key: "R_177d2811648f400e935b251cdbce495b"
 
 
-exclude: ['Gemfile*','.gitignore','README*','LICENSE*', 'vendor','.travis.yml','manifest.appcache','archives.md','circle.yml','.env','s3_website.yml']
+exclude: ['Gemfile*','.gitignore','README*','LICENSE*', 'vendor','.travis.yml','manifest.appcache','archives.md','circle.yml','.env','s3_website.yml', .scss, .js, .php, '.htaccess']
 
 
 social:
   googleplus: "https://plus.google.com/102150360200255682268/"
+
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      pdf: true

@@ -6,7 +6,7 @@ layout: default
 
 <article class="post" itemscope itemtype="http://schema.org/Article">
 	{% comment %}<!--{% if page.image %}
-	<a href="{{site.iacdn}}{{page.image}}" class="image featured"><img src="https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?url={{site.iacdn}}{{page.image}}&container=focus&resize_w=720&resize_h=720&refresh=300" alt="Renungan Harian {{ page.title }}" /></a>
+	<a href="{{page.image}}" class="image featured"><img src="https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?url={{page.image}}&container=focus&resize_w=720&resize_h=720&refresh=300" alt="Renungan Harian {{ page.title }}" /></a>
 	{% endif %}-->{% endcomment %}
 
 	<header>
@@ -19,9 +19,9 @@ layout: default
 	<span itemprop="author" content="Ikutlah Aku"></span>
 	<span itemprop="publisher" content="https://plus.google.com/102150360200255682268"></span>
 
-	<span itemprop="image" itemscope itemtype="https://schema.org/ImageObject" content="{{site.iacdn}}{{page.image}}"></span>
+	<span itemprop="image" itemscope itemtype="https://schema.org/ImageObject" content="{{page.image}}"></span>
 
-    <span itemprop="logo" content="{{site.iacdn}}/assets/ia_512.png"></span>
+    <span itemprop="logo" content="/assets/ia_512.png"></span>
 
 
 
@@ -75,19 +75,15 @@ layout: default
 
 	<a href="https://plusone.google.com/_/+1/confirm?hl=en&amp;url={{ site.securl }}{{ page.url }}" class="iasprt iasharegoogleplus" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
 
-	<a href="http://pinterest.com/pin/create/bookmarklet/?media={{site.iacdn}}{{page.image}}&amp;url={{ site.securl }}{{ page.url }}&amp;is_video=false&amp;description=Renungan%20Hari%20{{ page.title | append: ' ' | uri_escape }}" class="iasprt iasharepinterest" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
-
-	<a href="{{site.iacdn}}{{page.image}}" class="iasprt iasharepath" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; </p>
+	<a href="http://pinterest.com/pin/create/bookmarklet/?media=/assets{{page.image}}&amp;url={{ site.securl }}{{ page.url }}&amp;is_video=false&amp;description=Renungan%20Hari%20{{ page.title | append: ' ' | uri_escape }}" class="iasprt iasharepinterest" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; </p>
 
 	<p><a href="whatsapp://send?text={{ iasharewa | uri_escape }}" class="iasprt iasharewhatsapp" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
 
 	<a href="telegram://msg?text={{ iasharewa | uri_escape }}" class="iasprt iasharetelegram" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
 
-	<a href="bbmi://api/share?message={{ iasharewa | uri_escape }}&userCustomMessage=BBM%20message" class="iasprt iasharebbm" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
-
 	<a href="http://line.me/R/msg/text/?{{ iasharewa | uri_escape }}" class="iasprt iashareline" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
 
-	<a href="https://www.ikutlahaku.com/sms/?text={{ iasharewa | uri_escape }}" class="iasprt iasharesms" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; 
+	<!--<a href="https://www.ikutlahaku.com/sms/?text={{ iasharewa | uri_escape }}" class="iasprt iasharesms" target="_blank" rel="nofollow">&nbsp;</a>&nbsp; -->
 	
 	</p>
 
@@ -98,7 +94,7 @@ layout: default
 	var js, fjs = d.getElementsByTagName(s)[0];
 	if (d.getElementById(id)) return;
 	js = d.createElement(s); js.id = id;
-	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId={{site.fb_app_id}}";
+	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId={{site.fb_app_id}}";
 	fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>--></div>
 	
