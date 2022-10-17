@@ -10,8 +10,8 @@ email: hello@ikutlahaku.com
 description: > # this means to ignore newlines until "baseurl:"
   Renungan Harian
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://www.ikutlahaku.com" # the base hostname & protocol for your site
-securl: "https://www.ikutlahaku.com" # the base hostname & protocol for your site
+url: "https://ikutlahaku.andremoreno.com" # the base hostname & protocol for your site
+securl: "https://ikutlahaku.andremoreno.com" # the base hostname & protocol for your site
 twitter_username: IAdotcom
 github_username:  
 disqus_shortname: ikutlahaku
